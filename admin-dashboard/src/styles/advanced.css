@@ -1,0 +1,288 @@
+:root {
+  --advanced-primary-rgb: 56, 189, 248;
+  --advanced-secondary-rgb: 168, 85, 247;
+  --advanced-tertiary-rgb: 14, 165, 233;
+  --advanced-accent-rgb: 236, 72, 153;
+  --advanced-surface-rgb: 15, 23, 42;
+  --advanced-highlight: rgba(var(--advanced-primary-rgb), 0.25);
+  --advanced-border: rgba(148, 163, 184, 0.28);
+  --advanced-shadow: 0 26px 60px -38px rgba(var(--advanced-surface-rgb), 0.92);
+}
+
+html[data-theme-variant="cosmic-pulse"] {
+  --advanced-primary-rgb: 34, 211, 238;
+  --advanced-secondary-rgb: 124, 58, 237;
+  --advanced-tertiary-rgb: 244, 114, 182;
+  --advanced-accent-rgb: 129, 140, 248;
+  --advanced-surface-rgb: 9, 10, 38;
+  --advanced-border: rgba(var(--advanced-primary-rgb), 0.32);
+  --advanced-shadow: 0 30px 74px -38px rgba(var(--advanced-surface-rgb), 0.94);
+}
+
+html[data-theme-variant="solar-flare"] {
+  --advanced-primary-rgb: 249, 115, 22;
+  --advanced-secondary-rgb: 250, 204, 21;
+  --advanced-tertiary-rgb: 248, 113, 113;
+  --advanced-accent-rgb: 251, 191, 36;
+  --advanced-surface-rgb: 36, 8, 8;
+  --advanced-border: rgba(var(--advanced-primary-rgb), 0.28);
+  --advanced-shadow: 0 32px 76px -38px rgba(var(--advanced-surface-rgb), 0.9);
+}
+
+html[data-theme-variant="midnight-mirage"] {
+  --advanced-primary-rgb: 14, 165, 233;
+  --advanced-secondary-rgb: 250, 204, 21;
+  --advanced-tertiary-rgb: 134, 239, 172;
+  --advanced-accent-rgb: 236, 72, 153;
+  --advanced-surface-rgb: 10, 12, 24;
+  --advanced-border: rgba(var(--advanced-primary-rgb), 0.28);
+  --advanced-shadow: 0 28px 70px -38px rgba(var(--advanced-surface-rgb), 0.92);
+}
+
+html[data-theme-variant="luminous-oasis"] {
+  --advanced-primary-rgb: 59, 130, 246;
+  --advanced-secondary-rgb: 236, 72, 153;
+  --advanced-tertiary-rgb: 14, 165, 233;
+  --advanced-accent-rgb: 16, 185, 129;
+  --advanced-surface-rgb: 10, 16, 36;
+  --advanced-border: rgba(var(--advanced-primary-rgb), 0.3);
+  --advanced-shadow: 0 32px 74px -40px rgba(var(--advanced-surface-rgb), 0.9);
+}
+
+html[data-theme-variant="luminous-mist"] {
+  --advanced-primary-rgb: 96, 165, 250;
+  --advanced-secondary-rgb: 16, 185, 129;
+  --advanced-tertiary-rgb: 99, 102, 241;
+  --advanced-accent-rgb: 15, 118, 110;
+  --advanced-surface-rgb: 236, 241, 255;
+  --advanced-border: rgba(var(--advanced-primary-rgb), 0.26);
+  --advanced-shadow: 0 26px 58px -36px rgba(15, 23, 42, 0.35);
+}
+
+html[data-theme-variant="midnight-forge"] {
+  --advanced-primary-rgb: 249, 115, 22;
+  --advanced-secondary-rgb: 168, 85, 247;
+  --advanced-tertiary-rgb: 34, 211, 238;
+  --advanced-accent-rgb: 58, 12, 163;
+  --advanced-surface-rgb: 11, 13, 20;
+  --advanced-border: rgba(var(--advanced-primary-rgb), 0.32);
+  --advanced-shadow: 0 34px 78px -42px rgba(0, 0, 0, 0.78);
+}
+
+html[data-theme-variant="midnight-mirage"] {
+  --advanced-primary-rgb: 125, 211, 252;
+  --advanced-secondary-rgb: 250, 204, 21;
+  --advanced-tertiary-rgb: 134, 239, 172;
+  --advanced-accent-rgb: 251, 146, 60;
+  --advanced-surface-rgb: 15, 23, 42;
+  --advanced-border: rgba(var(--advanced-secondary-rgb), 0.28);
+  --advanced-shadow: 0 34px 78px -36px rgba(var(--advanced-surface-rgb), 0.92);
+}
+
+html[data-theme-variant="luminous-oasis"] {
+  --advanced-primary-rgb: 14, 165, 233;
+  --advanced-secondary-rgb: 236, 72, 153;
+  --advanced-tertiary-rgb: 59, 130, 246;
+  --advanced-accent-rgb: 16, 185, 129;
+  --advanced-surface-rgb: 255, 255, 255;
+  --advanced-border: rgba(var(--advanced-primary-rgb), 0.32);
+  --advanced-shadow: 0 28px 70px -38px rgba(15, 23, 42, 0.35);
+}
+
+html[data-ui-mode="advanced"] body {
+  background-image:
+    radial-gradient(circle at 15% 12%, rgba(var(--advanced-primary-rgb), 0.18), transparent 50%),
+    radial-gradient(circle at 82% 18%, rgba(var(--advanced-secondary-rgb), 0.16), transparent 52%),
+    radial-gradient(circle at 30% 82%, rgba(var(--advanced-tertiary-rgb), 0.12), transparent 50%),
+    linear-gradient(135deg, #020617 0%, #0f172a 52%, #111827 100%);
+  background-size: 210% 210%;
+  animation: advancedGradientShift 36s ease infinite;
+}
+
+html[data-ui-mode="advanced"] body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(circle at 10% 20%, rgba(var(--advanced-primary-rgb), 0.14), transparent 45%),
+    radial-gradient(circle at 80% 30%, rgba(var(--advanced-accent-rgb), 0.12), transparent 55%),
+    radial-gradient(circle at 35% 75%, rgba(var(--advanced-tertiary-rgb), 0.1), transparent 52%);
+  mix-blend-mode: screen;
+  pointer-events: none;
+  opacity: 0.6;
+  z-index: -1;
+}
+
+html[data-ui-mode="advanced"] body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at 50% 0%, rgba(var(--advanced-secondary-rgb), 0.12), transparent 55%);
+  filter: blur(120px);
+  opacity: 0.35;
+  z-index: -1;
+}
+
+html[data-ui-mode="advanced"] .MuiPaper-root:not(.MuiMenu-paper):not(.MuiPopover-paper):not(.MuiTooltip-tooltip):not(.MuiSnackbarContent-root) {
+  border: 1px solid var(--advanced-border);
+  background-image:
+    linear-gradient(160deg, rgba(var(--advanced-surface-rgb), 0.94) 0%, rgba(var(--advanced-surface-rgb), 0.76) 55%, rgba(var(--advanced-tertiary-rgb), 0.18) 100%),
+    linear-gradient(110deg, rgba(var(--advanced-primary-rgb), 0.18), rgba(var(--advanced-secondary-rgb), 0.12));
+  box-shadow: var(--advanced-shadow);
+  transition: box-shadow 240ms ease, border-color 240ms ease, transform 240ms ease;
+}
+
+html[data-ui-mode="advanced"] .MuiCard-root {
+  overflow: hidden;
+  position: relative;
+}
+
+html[data-ui-mode="advanced"] .MuiCard-root::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 30% 20%, rgba(var(--advanced-primary-rgb), 0.18), transparent 55%);
+  opacity: 0;
+  transition: opacity 260ms ease;
+  pointer-events: none;
+}
+
+html[data-ui-mode="advanced"] .MuiCard-root:hover,
+html[data-ui-mode="advanced"] .MuiPaper-root.MuiCard-root:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 32px 72px -36px rgba(15, 23, 42, 0.95);
+}
+
+html[data-ui-mode="advanced"] .MuiCard-root:hover::after {
+  opacity: 1;
+}
+
+html[data-ui-mode="advanced"] .MuiGrid-container > .MuiGrid-item {
+  position: relative;
+  animation: advancedItemReveal 520ms cubic-bezier(0.2, 0.9, 0.25, 1) both;
+}
+
+html[data-ui-mode="advanced"] .MuiGrid-container > .MuiGrid-item:nth-of-type(1) { animation-delay: 80ms; }
+html[data-ui-mode="advanced"] .MuiGrid-container > .MuiGrid-item:nth-of-type(2) { animation-delay: 120ms; }
+html[data-ui-mode="advanced"] .MuiGrid-container > .MuiGrid-item:nth-of-type(3) { animation-delay: 160ms; }
+html[data-ui-mode="advanced"] .MuiGrid-container > .MuiGrid-item:nth-of-type(4) { animation-delay: 200ms; }
+html[data-ui-mode="advanced"] .MuiGrid-container > .MuiGrid-item:nth-of-type(5) { animation-delay: 240ms; }
+html[data-ui-mode="advanced"] .MuiGrid-container > .MuiGrid-item:nth-of-type(6) { animation-delay: 280ms; }
+
+html[data-ui-mode="advanced"] .MuiButton-containedPrimary {
+  box-shadow: 0 26px 64px -36px rgba(var(--advanced-secondary-rgb), 0.85);
+}
+
+html[data-ui-mode="advanced"] .MuiButton-containedPrimary:hover {
+  box-shadow: 0 34px 80px -38px rgba(var(--advanced-secondary-rgb), 0.75);
+}
+
+html[data-ui-mode="advanced"] .MuiButton-outlinedPrimary {
+  border-color: rgba(var(--advanced-primary-rgb), 0.4);
+  background: rgba(var(--advanced-primary-rgb), 0.12);
+}
+
+html[data-ui-mode="advanced"] .MuiChip-root {
+  backdrop-filter: blur(16px);
+  background: rgba(var(--advanced-primary-rgb), 0.16);
+  border: 1px solid rgba(var(--advanced-primary-rgb), 0.25);
+}
+
+html[data-ui-mode="advanced"] .MuiChip-root.MuiChip-outlined {
+  background: rgba(15, 23, 42, 0.66);
+  border: 1px solid rgba(var(--advanced-secondary-rgb), 0.3);
+}
+
+html[data-ui-mode="advanced"] .MuiLinearProgress-colorPrimary .MuiLinearProgress-bar,
+html[data-ui-mode="advanced"] .MuiLinearProgress-colorSecondary .MuiLinearProgress-bar,
+html[data-ui-mode="advanced"] .MuiLinearProgress-colorSuccess .MuiLinearProgress-bar,
+html[data-ui-mode="advanced"] .MuiLinearProgress-colorInfo .MuiLinearProgress-bar {
+  background-image: linear-gradient(135deg, rgba(var(--advanced-primary-rgb), 1) 0%, rgba(var(--advanced-secondary-rgb), 1) 45%, rgba(var(--advanced-accent-rgb), 1) 100%);
+}
+
+html[data-ui-mode="advanced"] .MuiListItem-root:not(.MuiMenuItem-root) {
+  transition: background 220ms ease, transform 220ms ease;
+}
+
+html[data-ui-mode="advanced"] .MuiListItem-root:not(.MuiMenuItem-root):hover {
+  background: rgba(var(--advanced-primary-rgb), 0.08);
+  transform: translateY(-3px);
+}
+
+html[data-ui-mode="advanced"] .MuiTable-root {
+  border-collapse: separate;
+  border-spacing: 0 8px;
+}
+
+html[data-ui-mode="advanced"] .MuiTableRow-root {
+  transition: transform 220ms ease, background 220ms ease;
+}
+
+html[data-ui-mode="advanced"] .MuiTableRow-root:hover {
+  background: rgba(148, 163, 184, 0.12);
+  transform: translateX(-4px);
+}
+
+html[data-ui-mode="advanced"] .MuiTableCell-root {
+  border-bottom: none;
+  background: rgba(15, 23, 42, 0.72);
+}
+
+html[data-ui-mode="advanced"] .MuiPaginationItem-root.Mui-selected {
+  background: linear-gradient(120deg, rgba(var(--advanced-primary-rgb), 1) 0%, rgba(var(--advanced-secondary-rgb), 1) 100%);
+  box-shadow: 0 18px 40px -24px rgba(var(--advanced-secondary-rgb), 0.7);
+}
+
+html[data-ui-mode="advanced"] .MuiTooltip-tooltip {
+  backdrop-filter: blur(12px);
+  background: rgba(15, 23, 42, 0.86);
+  border: 1px solid rgba(148, 163, 184, 0.26);
+}
+
+html[data-ui-mode="advanced"] .MuiAvatar-root {
+  box-shadow: 0 18px 40px -28px rgba(var(--advanced-primary-rgb), 0.8);
+}
+
+html[data-ui-mode="advanced"] ::selection {
+  background: rgba(var(--advanced-primary-rgb), 0.35);
+  color: rgba(var(--advanced-surface-rgb), 1);
+}
+
+@keyframes advancedGradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes advancedItemReveal {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 18px, 0) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html[data-ui-mode="advanced"] body {
+    animation: none;
+  }
+
+  html[data-ui-mode="advanced"] .MuiGrid-container > .MuiGrid-item {
+    animation: none;
+  }
+
+  html[data-ui-mode="advanced"] .MuiCard-root:hover,
+  html[data-ui-mode="advanced"] .MuiPaper-root.MuiCard-root:hover {
+    transform: none;
+  }
+}

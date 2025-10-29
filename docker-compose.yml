@@ -1,0 +1,53 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "5000:5000"
+    environment:
+      - NODE_ENV=production
+      - MONGODB_URI=mongodb://mongo:27017/cybershield
+      - REDIS_URL=redis://redis:6379
+    depends_on:
+      - mongo
+      - redis
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+
+  ai-engine:
+    build: ./ai-engine
+    ports:
+      - "8000:8000"
+    environment:
+      - MODEL_PATH=/app/models
+    volumes:
+      - ./ai-models:/app/models
+
+  simulation-engine:
+    build: ./simulation-engine
+    ports:
+      - "8080:8080"
+    privileged: true
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+
+  mongo:
+    image: mongo:5.0
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
+
+volumes:
+  mongodb_data:

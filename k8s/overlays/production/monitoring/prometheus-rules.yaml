@@ -1,0 +1,27 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: cybershield-alerts
+  labels:
+    app: cybershield
+spec:
+  groups:
+  - name: cybershield.rules
+    rules:
+    - alert: HighErrorRate
+      expr: rate(http_requests_total{status=~"5.."}[5m]) > 0.1
+      for: 5m
+      labels:
+        severity: critical
+      annotations:
+        summary: "High error rate detected"
+        description: "Error rate is {{ $value }} for service {{ $labels.service }}"
+    
+    - alert: SimulationResourceExhaustion
+      expr: container_memory_usage_bytes{container="simulation-engine"} > 1.5e9
+      for: 2m
+      labels:
+        severity: warning
+      annotations:
+        summary: "Simulation engine high memory usage"
+        description: "Memory usage is {{ $value }} bytes"

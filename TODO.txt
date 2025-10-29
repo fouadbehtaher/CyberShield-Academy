@@ -1,0 +1,6 @@
+[x] Audit current theming setup (neoAuroraTheme, global styles, advanced.css)
+[x] Design new color palette + theme variants
+[x] Implement theme switching (light/dark/neo/3D) via context or menu
+[x] Add 3D background layer with WebGL-like effect (e.g., THREE.js alternative or CSS parallax)
+[x] Enhance interactions/animations consistently across components
+[x] Verify build/dev after visual overhaul

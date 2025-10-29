@@ -1,0 +1,16 @@
+:root {
+  color-scheme: dark;
+  --cs-ui-scale: 1;
+}
+
+html {
+  font-size: calc(16px * var(--cs-ui-scale));
+}
+
+body {
+  margin: 0;
+  font-family: 'Cairo', 'Tajawal', 'Rubik', 'Segoe UI', sans-serif;
+  background: transparent;
+  color: #e2e8f0;
+  transition: font-size 200ms ease;
+}

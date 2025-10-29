@@ -1,0 +1,10 @@
+server:
+  port: 8096
+
+spring:
+  application:
+    name: cyber-range-service
+
+cyberrange:
+  kubernetes:
+    namespace: cyber-range

@@ -1,0 +1,26 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - ../../base
+  - ./istio
+  - ./monitoring
+  - ./database
+
+patchesStrategicMerge:
+  - deployment-patches.yaml
+  - service-patches.yaml
+
+images:
+  - name: cybershield/api-gateway
+    newTag: v1.2.3-prod
+  - name: cybershield/auth-service
+    newTag: v1.2.3-prod
+
+replicas:
+  - name: api-gateway
+    count: 4
+  - name: auth-service
+    count: 3
+  - name: ai-coach-service
+    count: 3

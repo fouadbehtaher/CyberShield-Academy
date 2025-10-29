@@ -1,0 +1,61 @@
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      default-filters:
+        - name: Retry
+          args:
+            retries: 3
+            statuses: BAD_GATEWAY,SERVICE_UNAVAILABLE,GATEWAY_TIMEOUT
+            methods: GET,POST
+        - name: RequestRateLimiter
+          args:
+            key-resolver: '#{@ipKeyResolver}'
+            redis-rate-limiter.replenishRate: 50
+            redis-rate-limiter.burstCapacity: 100
+      routes:
+        - id: auth-service
+          uri: lb://auth-service
+          predicates:
+            - Path=/api/auth/**
+        - id: user-profile-service
+          uri: lb://user-profile-service
+          predicates:
+            - Path=/api/users/**
+        - id: ai-coach-service
+          uri: lb://ai-coach-service
+          predicates:
+            - Path=/api/ai/**
+        - id: simulation-orchestrator
+          uri: lb://simulation-orchestrator
+          predicates:
+            - Path=/api/simulations/**
+        - id: game-engine-service
+          uri: lb://game-engine-service
+          predicates:
+            - Path=/api/game/**
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedMethods: "*"
+            allowedHeaders: "*"
+server:
+  port: 8080
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://service-discovery:8761/eureka/
+    register-with-eureka: true
+    fetch-registry: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
+  endpoint:
+    health:
+      show-details: always

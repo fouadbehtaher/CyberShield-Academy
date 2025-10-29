@@ -1,0 +1,43 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: cybershield-main
+spec:
+  hosts:
+  - "cybershield.academy"
+  gateways:
+  - cybershield-gateway
+  http:
+  - match:
+    - uri:
+        prefix: "/api/"
+    route:
+    - destination:
+        host: api-gateway
+        port:
+          number: 8080
+    timeout: 30s
+    retries:
+      attempts: 3
+      perTryTimeout: 10s
+    corsPolicy:
+      allowOrigins:
+      - exact: https://cybershield.academy
+      allowMethods:
+      - GET
+      - POST
+      - PUT
+      - DELETE
+      - OPTIONS
+      allowHeaders:
+      - authorization
+      - content-type
+  - match:
+    - uri:
+        prefix: "/ws/"
+    route:
+    - destination:
+        host: websocket-gateway
+        port:
+          number: 8081
+    timeout: 3600s
