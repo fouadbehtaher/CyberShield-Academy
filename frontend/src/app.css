@@ -19,3 +19,7 @@ body { margin: 0; font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'No
   .simulation-visual-card, .simulation-side-panel { flex: 1 1 100% !important; width: 100%; box-sizing: border-box; }
   .app-panel { padding: 8px 10px; }
 }
+/* Keep the first and last mark labels inside the slider track. */
+.control-item .mantine-Slider-markWrapper:first-child .mantine-Slider-markLabel { transform: translateX(0); margin-inline-start: 0; }
+.control-item .mantine-Slider-markLabel { white-space: nowrap; font-size: 11px; }
+.master-control-panel .mantine-Slider-root { margin-inline: 24px; }
