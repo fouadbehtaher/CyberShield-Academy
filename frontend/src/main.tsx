@@ -2,6 +2,8 @@ import React, { Suspense, lazy, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import { MantineProvider } from '@mantine/core';
 import '@mantine/core/styles.css';
+import './app.css';
+import { MacroRecordingProvider } from './contexts/MacroRecordingContext';
 import { InjectionProvider } from './core/architecture/container';
 
 // Entry point that mounts two existing views. It adds no new features and
@@ -17,17 +19,20 @@ const App: React.FC = () => {
   return (
     <MantineProvider>
     <InjectionProvider>
-      <nav style={{ display: 'flex', gap: 8, padding: 8 }}>
-        <button onClick={() => { window.location.hash = 'control-panel'; setView('control-panel'); }}>Control panel</button>
-        <button onClick={() => { window.location.hash = 'cyber-city'; setView('cyber-city'); }}>Cyber city (3D)</button>
+      <nav className="app-nav">
+        <button className={view === 'control-panel' ? 'active' : ''} onClick={() => { window.location.hash = 'control-panel'; setView('control-panel'); }}>Control panel</button>
+        <button className={view === 'cyber-city' ? 'active' : ''} onClick={() => { window.location.hash = 'cyber-city'; setView('cyber-city'); }}>Cyber city (3D)</button>
       </nav>
+      <p className="app-note">Preview shell: no backend is connected, so panels show local default state only.</p>
       <Suspense fallback={<p>Loading...</p>}>
         {view === 'control-panel' ? (
-          <div dir="rtl" style={{ padding: 16, maxWidth: 960 }}>
-            <MasterControlPanel />
+          <div dir="rtl" className="app-panel">
+            <MacroRecordingProvider>
+              <MasterControlPanel />
+            </MacroRecordingProvider>
           </div>
         ) : (
-          <div style={{ height: 'calc(100vh - 60px)' }}>
+          <div style={{ height: 'calc(100vh - 90px)' }}>
             <CyberCityScene />
           </div>
         )}
