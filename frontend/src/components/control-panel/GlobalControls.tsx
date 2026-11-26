@@ -38,7 +38,7 @@ export const GlobalControls: React.FC<GlobalControlsProps> = ({ state, onStateCh
               max={10}
               step={0.1}
               marks={[
-                { value: 0.1, label: '0.1x' },
+                { value: 0.1 },
                 { value: 1, label: '1x' },
                 { value: 5, label: '5x' },
                 { value: 10, label: '10x' }
