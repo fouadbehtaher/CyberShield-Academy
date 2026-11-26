@@ -3,6 +3,7 @@ import { Canvas, useFrame } from '@react-three/fiber';
 import { Html, Line, OrbitControls, TransformControls, useCursor } from '@react-three/drei';
 import {
   Badge,
+  MantineProvider,
   Button,
   Card,
   Divider,
@@ -536,13 +537,16 @@ const SimulationScene: React.FC<SimulationSceneProps> = ({
       />
       <OrbitControls enableDamping makeDefault dampingFactor={0.12} />
       <Html position={[-3.5, 4, 0]} transform distanceFactor={9} className="floating-simulation-panel">
-        <FloatingControlPanel
-          state={state}
-          onStateChange={onStateChange}
-          simulationTime={simulationTime}
-          threatPercent={threatPercent}
-          activeScenarioCount={activeScenarioCount}
-        />
+        {/* drei's Html renders in its own React root, so React context (including Mantine's theme) does not pass through. */}
+        <MantineProvider>
+          <FloatingControlPanel
+            state={state}
+            onStateChange={onStateChange}
+            simulationTime={simulationTime}
+            threatPercent={threatPercent}
+            activeScenarioCount={activeScenarioCount}
+          />
+        </MantineProvider>
       </Html>
     </group>
   );
@@ -600,9 +604,11 @@ const NetworkNode: React.FC<NetworkNodeProps> = ({ node, index, threatRatio, sel
         />
       </mesh>
       <Html distanceFactor={12} position={[0, 0.65, 0]} transform className="node-label">
-        <Badge size="sm" radius="md" variant={selected ? 'filled' : 'light'} color={selected ? 'indigo' : 'blue'}>
-          {node.label}
-        </Badge>
+        <MantineProvider>
+          <Badge size="sm" radius="md" variant={selected ? 'filled' : 'light'} color={selected ? 'indigo' : 'blue'}>
+            {node.label}
+          </Badge>
+        </MantineProvider>
       </Html>
     </group>
   );
